@@ -1,0 +1,42 @@
+@media(max-width:800px){
+    #calculatorBox{
+        max-height: 850px;
+        width:500px;
+    }
+    #calScreen{
+        height:200px;
+        max-width:500px;
+    }
+    #calKeys{
+        width:100%;
+        height:550px;
+    }
+}
+@media(max-width:600px){
+    #calculatorBox{
+        max-height: 800px;
+        width:300px;
+    }
+    #calScreen{
+        height:200px;
+        max-width:300px;
+    }
+    #calKeys{
+        width:100%;
+        height:500px;
+    }
+}
+@media(max-width:300px){
+    #calculatorBox{
+        max-height: 500px;
+        width:200px;
+    }
+    #calScreen{
+        height:200px;
+        max-width:200px;
+    }
+    #calKeys{
+        width: 100%;
+        height:200px;
+    }
+}

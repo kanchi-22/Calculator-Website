@@ -1,0 +1,79 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+h1{
+    margin: 0px;
+    padding-top:20px;
+    padding-left:40px;
+    text-decoration: underline 2px dotted;
+}
+header{
+    height:100px;
+    background-color: rgb(10, 10, 19);
+    color:burlywood
+}
+main{
+    padding-top:1px;
+    background-color: burlywood;
+    padding-bottom: 80px;
+}
+#calculatorBox{
+    max-height:600px;
+    width:700px;
+    border:black solid 2px;
+    margin:auto;
+    margin-top:80px;
+}
+#calScreen{
+    border:rgb(10, 10, 19) solid 20px;
+    height:100px;
+    max-width:700px;
+    background-color: white;
+}
+.calLine{
+    font-size:30px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 20px;
+}
+#calKeys{
+    display: grid;
+    width:100%;
+    height:400px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+#ON{
+    background-color: rgb(181, 238, 181);
+}
+#ON:active{
+    background-color: rgb(119, 175, 119);
+}
+#OFF{
+    background-color: rgb(241, 136, 136);
+}
+#OFF:active{
+    background-color: rgb(145, 83, 83);
+}
+.key{
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 22px;
+    background-color: rgb(170, 219, 219);
+    padding:0px;
+}
+.key:active{
+    background-color: rgb(100, 173, 173);
+}
+p{
+    margin: 0px;
+    padding-top: 8px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+footer{
+    height:30px;
+    background-color: rgb(10, 10, 19);
+    color: burlywood;
+}

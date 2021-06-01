@@ -1,4 +1,4 @@
-console.log("Welcome to the console of Calculator!");
+// console.log("Welcome to the console of Calculator!");
 let a = 0;
 let b = 0;
 let result = 0;
@@ -158,6 +158,10 @@ equal.addEventListener('click',function(){
         alert("Let's turn on the calculator first.");
         is_on = true;
     }
+    if(a>0 && b>0 && decimal_check == true){
+        b += no_after_decimal;
+        // console.log("decimal b:",b);
+    }
     switch(oper){
         case '+':
             result = a+b;
@@ -177,12 +181,16 @@ equal.addEventListener('click',function(){
     b = 0;
     input=1;
     check = true;
+    decimal_check = false;
+    no_after_decimal = 0;
 })
+
 
 // Decimal -->
 
 decimal.addEventListener('click',function(){
     decimal_check = true;
+    line1.innerText += ".";
 })
 
 // CE, BACK, ON, OFF-->
@@ -240,35 +248,32 @@ function setValue(obj){
     if(decimal_check == true){
         no_after_decimal += Number(obj.id);
         no_after_decimal /= decimal_divider;
-        decimal_divider *= 10;
+        console.log(no_after_decimal);
         return;
     }
     if(input == 2 || input == 3){
         b = (b*10) + Number(obj.id);
-        console.log("b is set as: ",b);
+        // console.log("b is set as: ",b);
         input = 3;
     }
     else if(input==1){
         a = (a*10) + Number(obj.id);
-        console.log("a is set as: ",a);
+        // console.log("a is set as: ",a);
     }
 }
 function setOperator(obj){
     oper = obj.id;
     input++;
+    if(a>0 && b==0 && decimal_check == true){
+        a += no_after_decimal;
+        // console.log("decimal a:",a);
+    }
     if(check == true){
         line1.innerText = result;
         line2.innerText = "";
-    }
-    if(input == 1){
-        a += no_after_decimal;
-    }
-    else if(input == 2 || input == 3){
-        b += no_after_decimal;
-    }
+    }    
     decimal_check = false;
     no_after_decimal = 0;
-    decimal_divider = 10;
 }
 function displayNum(obj){
     if(line1.innerText == "0"){

@@ -3,8 +3,13 @@ let a = 0;
 let b = 0;
 let result = 0;
 let input = 1;
+let decimal_check = false;
+let check = false;
+let is_on = false;
 let oper = '';
 let r = false;
+let no_after_decimal = 0;
+let decimal_divider = 10;
 let one = document.getElementById("1");
 let two = document.getElementById("2");
 let three = document.getElementById("3");
@@ -20,6 +25,7 @@ let minus = document.getElementById("-");
 let multiply = document.getElementById("*");
 let divide = document.getElementById("/");
 let equal = document.getElementById("=");
+let decimal = document.getElementById(".");
 let ce = document.getElementById("CE");
 let back = document.getElementById("Back");
 let on = document.getElementById("ON");
@@ -30,42 +36,82 @@ let line2 = document.getElementById("line2");
 //Setting the Operands-->
 
 one.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(one);
     displayNum(one);
 });
 two.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(two);
     displayNum(two);
 });
 three.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(three);
     displayNum(three);
 });
 four.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(four);
     displayNum(four);
 });
 five.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(five);
     displayNum(five);
 });
 six.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(six);
     displayNum(six);
 });
 seven.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(seven);
     displayNum(seven);
 });
 eight.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(eight);
     displayNum(eight);
 });
 nine.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(nine);
     displayNum(nine);
 });
 zero.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setValue(zero);
     displayNum(zero);
 });
@@ -73,18 +119,34 @@ zero.addEventListener('click',function(){
 // Setting the Operator-->
 
 add.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setOperator(add);
     displayNum(add);
 });
 minus.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setOperator(minus);
     displayNum(minus);
 });
 multiply.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setOperator(multiply);
     displayNum(multiply);
 });
 divide.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     setOperator(divide);
     displayNum(divide);
 });
@@ -92,6 +154,10 @@ divide.addEventListener('click',function(){
 // Displaying the Result-->
 
 equal.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     switch(oper){
         case '+':
             result = a+b;
@@ -110,11 +176,22 @@ equal.addEventListener('click',function(){
     a = result;
     b = 0;
     input=1;
+    check = true;
+})
+
+// Decimal -->
+
+decimal.addEventListener('click',function(){
+    decimal_check = true;
 })
 
 // CE, BACK, ON, OFF-->
 
 ce.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     line1.innerText ="";
     line2.innerText ="";
     a = 0;
@@ -124,6 +201,10 @@ ce.addEventListener('click',function(){
 })
 
 back.addEventListener('click',function(){
+    if(is_on == false){
+        alert("Let's turn on the calculator first.");
+        is_on = true;
+    }
     if(input == 1){
         a = (a - (a%10))/10;
         line1.innerText = a;
@@ -139,6 +220,7 @@ back.addEventListener('click',function(){
 })
 
 on.addEventListener('click',function(){
+    is_on = true;
     line1.innerText = "0";
     line2.innerText = "";
 })
@@ -149,11 +231,18 @@ off.addEventListener('click',function(){
     a = 0;
     b = 0;
     oper="";
+    is_on = false;
 })
 
 // Declaring the Functions-->
 
 function setValue(obj){
+    if(decimal_check == true){
+        no_after_decimal += Number(obj.id);
+        no_after_decimal /= decimal_divider;
+        decimal_divider *= 10;
+        return;
+    }
     if(input == 2 || input == 3){
         b = (b*10) + Number(obj.id);
         console.log("b is set as: ",b);
@@ -167,6 +256,19 @@ function setValue(obj){
 function setOperator(obj){
     oper = obj.id;
     input++;
+    if(check == true){
+        line1.innerText = result;
+        line2.innerText = "";
+    }
+    if(input == 1){
+        a += no_after_decimal;
+    }
+    else if(input == 2 || input == 3){
+        b += no_after_decimal;
+    }
+    decimal_check = false;
+    no_after_decimal = 0;
+    decimal_divider = 10;
 }
 function displayNum(obj){
     if(line1.innerText == "0"){

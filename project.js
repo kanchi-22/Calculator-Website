@@ -176,6 +176,7 @@ equal.addEventListener('click',function(){
             result = a/b;
             break;
     }
+    result = Number(result.toFixed(3));
     line2.innerText = result;
     a = result;
     b = 0;

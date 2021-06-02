@@ -240,6 +240,9 @@ off.addEventListener('click',function(){
     line2.innerText = "";
     a = 0;
     b = 0;
+    result = 0;
+    input = 1;
+    check = false;
     oper="";
     is_on = false;
 })

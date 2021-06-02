@@ -207,6 +207,7 @@ ce.addEventListener('click',function(){
     b = 0;
     result = 0;
     input = 1;
+    check = false;
 })
 
 back.addEventListener('click',function(){
